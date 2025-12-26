@@ -9,7 +9,7 @@ public class Item {
 
     private boolean isCollected;
 
-    private String type;
+    private ItemType type;
     private String name;
 
     public Item(int itemX, int itemY, int itemWidth, int itemHeight){
@@ -53,7 +53,7 @@ public class Item {
 
     }
 
-    public String getType(){
+    public ItemType getType(){
 
         return type;
 
@@ -89,35 +89,29 @@ public class Item {
 
     }
 
-    public void setType(String newType){
+    public void setType(ItemType newItemType){
 
-        type = newType;
+        type = newItemType;
 
     }
 
-    public void setMaxQuantityByType(String type){
+    public enum ItemType{
 
-        if (type.equalsIgnoreCase("Misc")){
+        MISC,
+        MATERIALS,
+        AMMO,
+        WEAPON
 
-            maxQuantity = 5;
+    }
 
-        }
+    public void setMaxQuantityByType(ItemType type){
 
-        if (type.equalsIgnoreCase("Materials")){
+        switch (type){
 
-            maxQuantity = 100;
-
-        }
-
-        if (type.equalsIgnoreCase("Ammo")){
-
-            maxQuantity = 50;
-
-        }
-
-        if (type.equalsIgnoreCase("Weapon")){
-
-            maxQuantity = 1;
+            case AMMO -> maxQuantity = 50;
+            case MISC -> maxQuantity = 5;
+            case MATERIALS -> maxQuantity = 100;
+            case WEAPON -> maxQuantity = 1;
 
         }
 

@@ -9,7 +9,7 @@ public class WoodenSword extends Weapons{
         super(itemX, itemY, itemWidth, itemHeight);
 
         setName("Wooden Sword");
-        setType("Weapon");
+        setType(ItemType.WEAPON);
         setDamage(5);
         setDurability(50);
         setMaxDurability(50);

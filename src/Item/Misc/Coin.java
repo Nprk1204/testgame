@@ -13,7 +13,7 @@ public class Coin extends Item {
         super(itemX, itemY, itemWidth, itemHeight);
 
         setName("Coin");
-        setType("Materials");
+        setType(ItemType.MISC);
         setMaxQuantityByType(getType());
 
     }

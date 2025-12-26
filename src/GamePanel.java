@@ -21,8 +21,6 @@ public class GamePanel extends JPanel implements KeyListener, MouseListener {
 
     Player player;
 
-    Inventory inventory;
-
     Coin coin;
     Coin coin2;
     Coin coin3;
@@ -41,7 +39,6 @@ public class GamePanel extends JPanel implements KeyListener, MouseListener {
         height = 600;
 
         player = new Player(50, 50, 20, 20);
-        inventory = new Inventory();
 
         coin = new Coin(150, 150, 20, 20);
         coin2 = new Coin(150, 200, 20, 20);
@@ -94,7 +91,7 @@ public class GamePanel extends JPanel implements KeyListener, MouseListener {
 
             if (player.isCollidingWith(item.getX(), item.getY(), item.getWidth(), item.getHeight())){
 
-                inventory.addItem(item);
+                player.getInventory().addItem(item);
                 item.setCollected(true);
 
             }
@@ -157,7 +154,7 @@ public class GamePanel extends JPanel implements KeyListener, MouseListener {
 
         if (e.getKeyCode() == KeyEvent.VK_O){
 
-            inventory.showItems();
+            player.getInventory().showItems();
 
         }
 

@@ -1,12 +1,16 @@
 package Player;
 
+import Inventory.Inventory;
 import Item.Projectiles.Projectile;
 
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.util.ArrayList;
 
 public class Player implements KeyListener {
+
+    private Inventory inventory;
 
     private boolean up, down, left, right;
 
@@ -25,6 +29,14 @@ public class Player implements KeyListener {
         health = 20;
         maxHealth = 20;
         speed = 5;
+
+        inventory = new Inventory();
+
+    }
+
+    public Inventory getInventory(){
+
+        return inventory;
 
     }
 
