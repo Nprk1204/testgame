@@ -1,6 +1,7 @@
 import Inventory.Inventory;
 import Item.Item;
 import Item.Misc.Coin;
+import Item.Weapons.WoodenSword;
 import Player.Player;
 
 import javax.swing.*;
@@ -19,13 +20,15 @@ public class GamePanel extends JPanel implements KeyListener, MouseListener {
 
     Inventory inventory;
 
-    Item coin;
-    Item coin2;
-    Item coin3;
-    Item coin4;
-    Item coin5;
-    Item coin6;
-    Item coin7;
+    Coin coin;
+    Coin coin2;
+    Coin coin3;
+    Coin coin4;
+    Coin coin5;
+    Coin coin6;
+    Coin coin7;
+
+    WoodenSword woodenSword;
 
     ArrayList<Item> items;
 
@@ -45,6 +48,8 @@ public class GamePanel extends JPanel implements KeyListener, MouseListener {
         coin6 = new Coin(235, 175, 20, 20);
         coin7 = new Coin(235, 205, 20, 20);
 
+        woodenSword = new WoodenSword(300, 300, 50, 10);
+
         items = new ArrayList<>();
         items.add(coin);
         items.add(coin2);
@@ -53,6 +58,8 @@ public class GamePanel extends JPanel implements KeyListener, MouseListener {
         items.add(coin5);
         items.add(coin6);
         items.add(coin7);
+
+        items.add(woodenSword);
 
         setPreferredSize(new Dimension(width, height));
         setBackground(Color.BLACK);

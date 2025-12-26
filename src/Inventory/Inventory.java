@@ -7,6 +7,7 @@ import java.util.ArrayList;
 public class Inventory {
 
     private int x, y;
+    private boolean containsItem;
 
     private ArrayList<Item> inventory;
 
@@ -14,6 +15,21 @@ public class Inventory {
 
         inventory = new ArrayList<>();
 
+    }
+
+    public boolean containsItem(Item item){
+
+        for (Item items : inventory){
+
+            if (item.getName().equalsIgnoreCase(items.getName())){
+
+                return containsItem = true;
+
+            }
+
+        }
+
+        return false;
     }
 
     public void addItem(Item item){

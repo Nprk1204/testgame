@@ -109,6 +109,18 @@ public class Item {
 
         }
 
+        if (type.equalsIgnoreCase("Ammo")){
+
+            maxQuantity = 50;
+
+        }
+
+        if (type.equalsIgnoreCase("Weapon")){
+
+            maxQuantity = 1;
+
+        }
+
     }
 
     public void setCollected(boolean newIsCollected){
