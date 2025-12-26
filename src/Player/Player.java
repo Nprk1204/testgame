@@ -1,5 +1,7 @@
 package Player;
 
+import Item.Projectiles.Projectile;
+
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
@@ -7,6 +9,8 @@ import java.awt.event.KeyListener;
 public class Player implements KeyListener {
 
     private boolean up, down, left, right;
+
+    private Direction facing;
 
     private int x, y, width, height;
     private int health, maxHealth;
@@ -75,6 +79,12 @@ public class Player implements KeyListener {
 
     }
 
+    public Direction getFacing(){
+
+        return facing;
+
+    }
+
     public void stayOnScreen(int sWidth, int sHeight){
 
         if (x < 0) {
@@ -92,6 +102,17 @@ public class Player implements KeyListener {
         if (y + height > sHeight){
             y = sHeight - height;
         }
+
+    }
+
+    public enum Direction{
+        UP,DOWN,LEFT,RIGHT
+
+    }
+
+    public Projectile shoot(){
+
+        return new Projectile(x + width/2, y + height/2, facing);
 
     }
 
@@ -134,24 +155,28 @@ public class Player implements KeyListener {
         if (e.getKeyCode() == KeyEvent.VK_W || e.getKeyCode() == KeyEvent.VK_UP){
 
             up = true;
+            facing = Direction.UP;
 
         }
 
         if (e.getKeyCode() == KeyEvent.VK_S || e.getKeyCode() == KeyEvent.VK_DOWN){
 
             down = true;
+            facing = Direction.DOWN;
 
         }
 
         if (e.getKeyCode() == KeyEvent.VK_A || e.getKeyCode() == KeyEvent.VK_LEFT){
 
             left = true;
+            facing = Direction.LEFT;
 
         }
 
         if (e.getKeyCode() == KeyEvent.VK_D || e.getKeyCode() == KeyEvent.VK_RIGHT){
 
             right = true;
+            facing = Direction.RIGHT;
 
         }
 

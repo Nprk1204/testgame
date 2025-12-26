@@ -1,6 +1,7 @@
 import Inventory.Inventory;
 import Item.Item;
 import Item.Misc.Coin;
+import Item.Projectiles.Projectile;
 import Item.Weapons.WoodenSword;
 import Player.Player;
 
@@ -15,6 +16,8 @@ import java.util.ArrayList;
 public class GamePanel extends JPanel implements KeyListener, MouseListener {
 
     private int width, height;
+
+    private ArrayList<Projectile> projectiles = new ArrayList<>();
 
     Player player;
 
@@ -104,6 +107,20 @@ public class GamePanel extends JPanel implements KeyListener, MouseListener {
 
         }
 
+        for (int i = 0; i < projectiles.size(); i ++){
+
+            Projectile p = projectiles.get(i);
+            p.update();
+
+            if (p.isDead()){
+
+                projectiles.remove(i);
+                i--;
+
+            }
+
+        }
+
         items.removeAll(toRemove);
 
     }
@@ -121,6 +138,12 @@ public class GamePanel extends JPanel implements KeyListener, MouseListener {
 
         }
 
+        for (Projectile p : projectiles){
+
+            p.draw(g2);
+
+        }
+
     }
 
 
@@ -135,6 +158,12 @@ public class GamePanel extends JPanel implements KeyListener, MouseListener {
         if (e.getKeyCode() == KeyEvent.VK_O){
 
             inventory.showItems();
+
+        }
+
+        if (e.getKeyCode() == KeyEvent.VK_SPACE){
+
+            projectiles.add(player.shoot());
 
         }
 
